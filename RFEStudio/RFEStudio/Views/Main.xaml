@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="RFEStudio.Main"
+            xmlns:oxyplot="clr-namespace:RFEStudio.Controls;assembly=RFEStudio"
+            xmlns:local="clr-namespace:RFEStudio"
+            Title="Main"
+            BackgroundColor="{StaticResource DefaultBG}">
+
+<ContentPage.ToolbarItems>
+    <ToolbarItem 
+        Text="CSV"
+        Command="{Binding cmdReport}"/>
+    <ToolbarItem 
+        Text="Info"
+        Command="{Binding cmdInfo}"/>
+    </ContentPage.ToolbarItems>
+
+<ContentPage.Content>
+
+        <Grid>
+                <Grid>
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <oxyplot:PlotView
+                                Grid.Row="0" Grid.Column="0"
+                                BackgroundColor="{StaticResource WhiteColor}"
+                                Model="{Binding sweep_plot_model}"/>
+
+                        <Grid Grid.Row="1" Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Port = " VerticalOptions="Center" />
+                                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding port, Mode=TwoWay}" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="Baud = "  VerticalOptions="Center" />
+                                <Entry Grid.Row="0" Grid.Column="3" Text="{Binding baud, Mode=TwoWay}" />
+
+                                <Button Grid.Row="0" Grid.Column="5" 
+                                        Text="Connect"
+                                        Command="{Binding cmdConnect}"
+                                        CommandParameter="1"
+                                        BackgroundColor="{StaticResource BlueColor}"
+                                        TextColor="{StaticResource DarkTextColor}"
+                                        BorderWidth="0" HorizontalOptions="Fill"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="f1 = " VerticalOptions="Center" />
+                                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding freq_1, Mode=TwoWay}" />
+                                <Label Grid.Row="1" Grid.Column="2" Text="f2 = "  VerticalOptions="Center" />
+                                <Entry Grid.Row="1" Grid.Column="3" Text="{Binding freq_2, Mode=TwoWay}" />
+
+                                <Button Grid.Row="1" Grid.Column="5" 
+                                        Text="Update Settings ->"
+                                        Command="{Binding cmdUpdateSettings}"
+                                        CommandParameter="1"
+                                        BackgroundColor="{StaticResource GreenColor}"
+                                        TextColor="{StaticResource DarkTextColor}"
+                                        BorderWidth="0" HorizontalOptions="Fill"/>
+
+                        </Grid>
+                </Grid>
+
+                <ActivityIndicator
+                        IsVisible="{Binding is_busy}"
+                        IsRunning="{Binding is_busy}"
+                        Color="White"
+                        BackgroundColor="{StaticResource DefaultBG}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

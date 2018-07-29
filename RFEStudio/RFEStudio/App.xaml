@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RFEStudio.App">
+	<Application.Resources>
+
+            <!-- COLORS -->
+            <Color x:Key="DefaultBG">#FFFFFF</Color>
+            <Color x:Key="AlternativeBG">#AAAAAA</Color>
+            <Color x:Key="WhiteBG">#FFFFFF</Color>
+            <Color x:Key="HelpButtonBG">Orange</Color>
+            <Color x:Key="GreenColor">LimeGreen</Color>
+            <Color x:Key="RedColor">OrangeRed</Color>
+            <Color x:Key="BlueColor">#0000FF</Color>
+            <Color x:Key="YellowColor">Yellow</Color>
+            <Color x:Key="GrayColor">#888888</Color>
+
+            <Color x:Key="LightTextColor">#FFFFFF</Color>
+            <Color x:Key="DarkTextColor">Black</Color>
+            <Color x:Key="AccentTextColor">Yellow</Color>
+
+            <Color x:Key="AccentColor">#353186</Color>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+
+            <Style x:Key="QuestionLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource DarkTextColor}"/>
+            <Setter Property="Font" Value="14"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+	</Application.Resources>
+</Application>

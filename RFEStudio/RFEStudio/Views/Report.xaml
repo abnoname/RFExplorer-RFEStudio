@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RFEStudio.Views.Report"   
+             Title="Report"
+             BackgroundColor="{StaticResource DefaultBG}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Icon="Images/home-1.png"
+            Text="Home"
+            Command="{Binding cmdPageHome}"/>
+        <ToolbarItem 
+            Icon="Images/info.png"
+            Text="Info"
+            Command="{Binding cmdPageHelp}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <Grid>
+                    <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="60" />
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="0" />
+                                </Grid.ColumnDefinitions>
+                                
+
+                                <ListView Grid.Row="1" Grid.Column="1"
+                                    ItemsSource="{Binding Path=Test_Result_Complete}"
+                                    BackgroundColor="{StaticResource DefaultBG}">
+                                    <ListView.Header>
+                                                <Grid Padding="10" RowSpacing="10" ColumnSpacing="5" BackgroundColor="{StaticResource GrayColor}">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="150" />
+                                                            <ColumnDefinition Width="150" />
+                                                            <ColumnDefinition Width="70" />
+                                                            <ColumnDefinition Width="60" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Column="0" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding Database_Selected_Device_Item, StringFormat='{0:T}'}" FontAttributes="Bold" />
+                                                        <Label Grid.Column="1" Style="{StaticResource MeasureListLabelStyle}" Text="" />
+                                                        <Label Grid.Column="2" Style="{StaticResource MeasureListLabelStyle}" Text="Value" HorizontalTextAlignment="End"/>
+                                                        <Label Grid.Column="3" Style="{StaticResource MeasureListLabelStyle}" Text="" />
+                                                        <Label Grid.Column="4" Style="{StaticResource MeasureListLabelStyle}" Text="Min" HorizontalTextAlignment="End"/>
+                                                        <Label Grid.Column="5" Style="{StaticResource MeasureListLabelStyle}" Text="" />
+                                                        <Label Grid.Column="6" Style="{StaticResource MeasureListLabelStyle}" Text="Max" HorizontalTextAlignment="End"/>
+                                                        <Label Grid.Column="7" Style="{StaticResource MeasureListLabelStyle}" Text=""/>
+                                                        <Label Grid.Column="8" Style="{StaticResource MeasureListLabelStyle}" Text=""/>
+                                                </Grid>
+                                    </ListView.Header>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Padding="10" RowSpacing="10" ColumnSpacing="5">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="150" />
+                                                            <ColumnDefinition Width="150" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="50" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Column="0" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding module}" FontAttributes="Bold" />
+                                                        <Label Grid.Column="1" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding description}" FontAttributes="Bold" />
+                                                        <Label Grid.Column="2" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding value}" HorizontalTextAlignment="End"/>
+                                                        <Label Grid.Column="3" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding unit}" />
+                                                        <Label Grid.Column="4" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding min}" HorizontalTextAlignment="End"/>
+                                                        <Label Grid.Column="5" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding unit}" />
+                                                        <Label Grid.Column="6" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding max}" HorizontalTextAlignment="End"/>
+                                                        <Label Grid.Column="7" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding unit}"/>
+                                                    	<Label Grid.Column="8" Style="{StaticResource MeasureListLabelStyle}" Text="{Binding pass_string}"/>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" 
+                                            Grid.Row="2" 
+                                            Grid.Column="1">
+
+                                        <Button Text=""
+                                            Command="{Binding cmdReportSave}"
+                                            IsEnabled="{Binding drive_available}"
+                                            CommandParameter="1"
+                                            Image="Images/folder-15.png"
+                                            BackgroundColor="{StaticResource YellowColor}"
+                                            TextColor="{StaticResource DarkTextColor}"
+                                            BorderWidth="0"/>
+ 
+                                </StackLayout>
+                    </Grid>
+
+                    <ActivityIndicator
+                        IsVisible="{Binding IsBusy}"
+                        IsRunning="{Binding IsBusy}"
+                        Color="White"
+                        BackgroundColor="{StaticResource DefaultBG}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+
+        </Grid>
+       
+    </ContentPage.Content>
+
+</ContentPage>

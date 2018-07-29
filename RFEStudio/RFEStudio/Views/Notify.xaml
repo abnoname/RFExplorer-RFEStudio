@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RFEStudio.Views.Notify"   
+             Title=""
+             BackgroundColor="{StaticResource DefaultBG}">
+
+    <ContentPage.Content>
+
+	    <Grid>
+	        <Grid.RowDefinitions>
+	            <RowDefinition Height="20" />
+                <RowDefinition Height="0.8*" />
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="20" />
+	        </Grid.RowDefinitions>
+
+	        <Grid.ColumnDefinitions>
+	            <ColumnDefinition Width="20" />
+	            <ColumnDefinition Width="0.8*" />
+                <ColumnDefinition Width="0.2*" />
+	            <ColumnDefinition Width="20" />
+	        </Grid.ColumnDefinitions>
+
+	    	<Label Text="{Binding Notify_Text}"
+	           		Grid.Row="1" Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource QuestionLabelStyle}"/>
+
+            <Button Text="OK"
+                Command="{Binding cmdNotifyOK}"
+                CommandParameter="1"
+                BackgroundColor="{StaticResource GreenColor}"
+                TextColor="{StaticResource DarkTextColor}"
+                BorderWidth="0"
+                Grid.Row="2" Grid.Column="2">
+            </Button>
+
+	    </Grid>
+	   
+    </ContentPage.Content>
+
+</ContentPage>
